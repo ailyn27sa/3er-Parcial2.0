@@ -1,11 +1,8 @@
 #include <iostream>
 
 int main() {
-    int numero = 1;
-
-    while (numero <= 100) {
+    for (int numero = 1; numero <= 100; numero += 2) {
         std::cout << numero << std::endl;
-        numero += 2;
     }
 
     return 0;
