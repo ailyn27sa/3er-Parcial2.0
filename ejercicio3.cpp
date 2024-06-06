@@ -1,35 +1,37 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
-int main (){
-float num1,num2,num3;
+int main() {
+    int num1, num2, num3;
 
-cout<<"ingrese el primer numero";
-cin>>num1;
-cout<<"ingrese el segundo numero";
-cin>>num2;
-cout<<"ingrese el tercer numero";
-cin>>num3;
+    // Solicitar al usuario que ingrese los tres números
+    cout << "Ingresa el primer numero: ";
+    cin >> num1;
+    cout << "Ingresa el segundo numero: ";
+    cin >> num2;
+    cout << "Ingresa el tercer numero: ";
+    cin >> num3;
 
-if (num1 <= num2 && num1 <= num3) {
-    if (num2 <= num3) {
-      cout<<num1<< " " <<num2<< " " <<num3<<endl;
-    } else {
-      cout<<num1<< " " <<num3<< " " <<num2<<endl;
+    // Ordenar los números
+    if (num1 > num2) {
+        int temp = num1;
+        num1 = num2;
+        num2 = temp;
     }
-  } else if (num2 <= num1 && num2 <= num3) {
-    if (num1 <= num3) {
-      cout<<num2<< " " <<num1<< " " <<num3<<endl;
-    } else {
-      cout<<num2<< " " <<num3<< " " <<num1<<endl;
+    if (num2 > num3) {
+        int temp = num2;
+        num2 = num3;
+        num3 = temp;
     }
-  } else {
-    if (num1 <= num2) {
-      cout<<num3<< " " <<num1<< " " <<num2<<endl;
-    } else {
-      cout<<num3<< " " <<num2<< " " <<num1<<endl;
+    if (num1 > num2) {
+        int temp = num1;
+        num1 = num2;
+        num2 = temp;
     }
-  }
 
-return 0;
+    // Mostrar los números ordenados
+    cout << "Los numeros ordenados de menor a mayor son: " << num1 << ", " << num2 << ", " << num3 << endl;
+
+    return 0;
 }
