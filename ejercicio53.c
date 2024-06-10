@@ -1,40 +1,53 @@
-//Nathaly Cuamatzi Cuamatzi 
 #include <stdio.h>
 
-float calcularMax(float x, float y) {
-    return (x > y) ? x : y;
-}
+float calcularMax(float x, float y);
+float calcularNota(float p1, float p2, float e);
 
-float calcularNota(float parcial1, float parcial2, float examen) {
-    float promedio_parciales = (parcial1 * 0.2) + (parcial2 * 0.2);
-    float nota_final = calcularMax(promedio_parciales, examen);
-    return nota_final;
-}
-
-int main(void) {
+int main(void)
+{
     char c;
-
-    do {
+    do
+    {
         float parcial1, parcial2, examen, final;
 
-        // valentin Leer las calificaciones
-        printf("Introduzca calificación del primer parcial [0, 10]: ");
+        // Leer valores
+        printf("Introduzca nota parcial 1 [0, 10]: ");
         scanf("%f", &parcial1);
-        printf("Introduzca calificación del segundo parcial [0, 10]: ");
+        printf("Introduzca nota parcial 2 [0, 10]: ");
         scanf("%f", &parcial2);
-        printf("Introduzca calificación del examen final [0, 10]: ");
+        printf("Introduzca nota examen final [0, 10]: ");
         scanf("%f", &examen);
 
-        //danna Calcular la nota final
+        // Calcular nota final
         final = calcularNota(parcial1, parcial2, examen);
 
-        // Ailyn Imprimir resultados
-        printf("La nota final del alumno es: %.2f\n", final);
+        // Imprimir resultados
+        printf("Nota final: %f\n", final);
 
-        // katherine Preguntar al usuario si desea calcular otra nota
-        printf("\n¿Desea calcular otra nota? (Presione 's' para salir): ");
-        scanf(" %c", &c);
-    } while (c != 's' && c != 'S');
+        // Continuar?
+        printf("\n¿Salir? (s/n): ");
+        // Para evitar conflictos con el salto de línea (\n) y 
+        // evitar un bucle infinito se recurre al siguiente "truco"
+        do
+        {
+            scanf("%c", &c);
+        } while (c == '\n');
+        printf("\n");
+    } while (c != 's');
 
     return 0;
+}
+
+float calcularNota(float p1, float p2, float notaExamen) {
+    /* Función calcularNota: Calcula la nota final a partir de:
+       - primer parcial 20% (p1)
+       - segundo parcial 20% (p2)
+       - examen final 60% (notaExamen)
+       Si la nota final con la evaluación continua es menor a la del examen, la nota final es la del examen.
+    */
+    float notaFinal = 0.2 * p1 + 0.2 * p2 + 0.6 * notaExamen;
+    if (notaFinal < notaExamen) {
+        return notaExamen;
+    }
+    return notaFinal;
 }
